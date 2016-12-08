@@ -29,5 +29,28 @@ public class CitaManagedBean implements Serializable {
     public CitaManagedBean() {
     }
 
+    public Cita getCita() {
+        return cita;
+    }
+
+    public void setCita(Cita cita) {
+        this.cita = cita;
+    }
     
+    @PostConstruct
+    public void init(){
+        cita = new Cita();
+    }
+    
+    public void registrarCita(){
+        cfl.create(cita);
+    }
+    
+    public List<Cita> listarCita(){
+        return cfl.findAll();
+    }
+    
+    public void eliminarCita(){
+        cfl.remove(cita);
+    }
 }
