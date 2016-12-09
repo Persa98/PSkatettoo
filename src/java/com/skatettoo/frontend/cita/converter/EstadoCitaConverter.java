@@ -5,10 +5,18 @@
  */
 package com.skatettoo.frontend.cita.converter;
 
+import com.skatettoo.backend.persistence.entities.EstadoCita;
+import com.skatettoo.frontend.util.AbstractConvertidores;
+import javax.faces.convert.FacesConverter;
+
 /**
  *
  * @author StivenDavid
  */
-public class EstadoCitaConverter {
+@FacesConverter(forClass = EstadoCita.class)
+public class EstadoCitaConverter extends AbstractConvertidores {
     
+    public EstadoCitaConverter(){
+        this.nombreMB = "estadoCManagedBean"; 
+    }
 }
