@@ -10,20 +10,48 @@
     <h:body>
         <f:view>
             <h:form id="fr">
-                <h:form>
-                    <h1><h:outputText value="Create/Edit"/></h1>
+                <div class="row">
+                    <p:panel header="Registrar Estado Cita">
+                        <h:form id="formulario">
+                            <p:messages autoUpdate="true"/>
+                            <h:panelGrid columns="2" cellpadding="5" cellspacing="5">
+
+                                <h:outputLabel value="Id Estado Cita:" for="idEstadoCita" />
+                                <p:inputText id="idEstadoCita" value="#{estadoCManagedBean.estci.idEstadoCita}" title="IdEstadoCita" required="true" requiredMessage="The IdEstadoCita field is required."/>
+                                <h:outputLabel value="Nombre del Estado:" for="nombreEstadoCita" />
+                                <p:inputText id="nombreEstadoCita" value="#{estadoCManagedBean.estci.nombreEstadoCita}" title="NombreEstadoCita" required="true" requiredMessage="The NombreEstadoCita field is required."/>
+                                <p:commandButton value="Registrar" update=":fr:formulario :fr:tabla" actionListener="#{estadoCManagedBean.registrarEstadoCita()}"/>
+                        </h:panelGrid>
+                    </h:form>
+                </p:panel>
+                <p:dataTable value="#{estadoCManagedBean.listarEstadoCita()}" var="ec" id="tabla">
+                    <p:column headerText="Id Estado Cita">
+                        <h:outputText value="#{ec.idEstadoCita}"/>
+                    </p:column>
+                    <p:column headerText="Estado">
+
+                        <h:outputText value="#{ec.nombreEstadoCita}"/>
+                    </p:column>
+                    <p:column>
+                        <p:commandButton value="Eliminar" actionListener="#{estadoCManagedBean.eliminarEstadoCita(ec)}" update="tabla"/>
+                        <p:commandButton value="Modificar" actionListener="#{estadoCManagedBean.eliminarEstadoCita(ec)}" oncomplete="PF('dlg2').show();" update=":fr:formulario2"/>
+                    </p:column>
+                </p:dataTable>
+            </div>
+            <p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
+                <h:form id="formulario2">
+                    <p:messages autoUpdate="true"/>
                     <h:panelGrid columns="2">
 
                         <h:outputLabel value="IdEstadoCita:" for="idEstadoCita" />
                         <p:inputText id="idEstadoCita" value="#{estadoCManagedBean.estci.idEstadoCita}" title="IdEstadoCita" required="true" requiredMessage="The IdEstadoCita field is required."/>
                         <h:outputLabel value="NombreEstadoCita:" for="nombreEstadoCita" />
-                        <p:inputText id="nombreEstadoCita" value="#{estadoCManagedBean.estci.nombreEstadoCita}" title="NombreEstadoCita" required="true" requiredMessage="The NombreEstadoCita field is required."/>
-                        <h:outputLabel value="Id:" for="id" />
-                        <p:inputText id="id" value="#{estadoCManagedBean.estci.id}" title="Id" />
-                        <p:commandButton value="Registrar" update=":fr:formulario :fr:tabla" actionListener="#{estadoCManagedBean.registrarEstadoCita()}"
+                        <p:inputText id="nombreEstadoCita" value="#{estadoCManagedBean.estci.nombreEstadoCita}" title="IdEstadoCita" required="true" requiredMessage="The NombreEstadoCita field is required."/>
+                        <p:commandButton value="Registrar" update=":fr:formulario :fr:tabla" actionListener="#{estadoCManagedBean.registrarEstadoCita()}"/>
                 </h:panelGrid>
             </h:form>
-        </h:form>
-    </f:view>
+        </p:dialog>
+    </h:form>
+</f:view>
 </h:body>
 </html>

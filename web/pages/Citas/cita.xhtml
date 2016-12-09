@@ -41,78 +41,11 @@
                                 <!-- TODO: update below reference to list of available items-->
                                 <f:selectItems value="#{estadoCManagedBean.listarEstadoCita()}" var="cacuador" itemLabel="#{cacuador.nombreEstadoCita}"/>
                             </h:selectOneMenu>
-                            <p:commandButton value="Registrar" update=":fr:formulario :fr:tabla" actionListener="#{citaManagedBean.registraCita()}"/>
+                            <p:commandButton value="Registrar" actionListener="#{citaManagedBean.registraCita()}"/>
                         </h:panelGrid>
                     </h:form>
                 </p:panel>
-                <p:dataTable value="#{citaManagedBean.listarCita()}" var="c" id="tabla">
-                    <p:column headerText="Id Cita">
-                        <h:outputText value="#{c.idCita}"/>
-                    </p:column>
-                    <p:column headerText="Descripcion">
-                        <h:outputText value="#{c.descripcion}"/>
-                    </p:column>
-                    <p:column headerText="Valor">
-                        <h:outputText value="#{c.valorTatuaje}"/>
-                    </p:column>
-                    <p:column headerText="Fecha">
-                        <h:outputText value="#{c.fechaHora}">
-                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                        </h:outputText>
-                    </p:column>
-                    <p:column headerText="Diseñe Adjunto">
-                        <h:outputText value="#{c.disenioAdjunto}"/>
-                    </p:column>
-                    <p:column headerText="Id Diseño">
-                        <h:outputText value="#{c.idDisenio}"/>
-                    </p:column>
-                    <p:column headerText="Id Usuario">
-                        <h:outputText value="#{c.idUsuario}"/>
-                    </p:column>
-                    <p:column headerText="Id Estado">
-                        <h:outputText value="#{c.idEstadoCita}"/>
-                    </p:column>
-                    <p:column>
-                        <p:commandButton value="Eliminar" actionListener="#{citaManagedBean.eliminarCita(ci)}" update="tabla"/>
-                        <p:commandButton value="Modificar" actionListener="#{citaManagedBean.actualizarCita(ci)}" oncomplete="PF('dlg2').show();" update=":fr:formulario2"/>
-                    </p:column>
-                </p:dataTable>
-            </div>
-            <p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
-                <h:form id="formulario2">
-                    <p:messages autoUpdate="true"/>
-                    <h:panelGrid columns="2" cellpadding="5" cellspacing="5">
-                        <h:outputLabel value="FechaHora:" for="fechaHora" />
-                        <h:inputText id="fechaHora" value="#{citaManagedBean.cita.fechaHora}" title="FechaHora" required="true" requiredMessage="The FechaHora field is required.">
-                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                        </h:inputText>
-
-                        <h:outputLabel value="Descripcion:" for="descripcion" />
-                        <h:inputTextarea rows="4" cols="30" id="descripcion" value="#{citaManagedBean.cita.descripcion}" title="Descripcion" required="true" requiredMessage="The Descripcion field is required."/>
-                        <h:outputLabel value="ValorTatuaje:" for="valorTatuaje" />
-                        <h:inputText id="valorTatuaje" value="#{citaManagedBean.cita.valorTatuaje}" title="ValorTatuaje" required="true" requiredMessage="The ValorTatuaje field is required."/>
-
-                        <h:outputLabel value="DisenioAdjunto:" for="disenioAdjunto" />
-                        <h:inputTextarea rows="4" cols="30" id="disenioAdjunto" value="#{citaManagedBean.cita.disenioAdjunto}" title="DisenioAdjunto" />
-                        <h:outputLabel value="IdDisenio:" for="idDisenio" />
-                        <h:selectOneMenu id="idDisenio" value="#{citaManagedBean.cita.idDisenio}" title="IdDisenio" >
-                            <!-- TODO: update below reference to list of available items-->
-                            <f:selectItems value="#{fixme}"/>
-                        </h:selectOneMenu>
-                        <h:outputLabel value="IdUsuario:" for="idUsuario" />
-                        <h:selectOneMenu id="idUsuario" value="#{citaManagedBean.cita.idUsuario}" title="IdUsuario" required="true" requiredMessage="The IdUsuario field is required.">
-                            <!-- TODO: update below reference to list of available items-->
-                            <f:selectItems value="#{usuarioManagedBean.listarUsuario()}" var="tatuador" itemLabel="#{tatuador.nombre} #{tatuador.apellido}"/>
-                        </h:selectOneMenu>
-                        <h:outputLabel value="IdEstadoCita:" for="idEstadoCita" />
-                        <h:selectOneMenu id="idEstadoCita" value="#{citaManagedBean.cita.idEstadoCita}" title="IdEstadoCita" required="true" requiredMessage="The IdEstadoCita field is required.">
-                            <!-- TODO: update below reference to list of available items-->
-                            <f:selectItems value="#{estadoCManagedBean.listarEstadoCita()}" var="cacuador" itemLabel="#{cacuador.nombreEstadoCita}"/>
-                        </h:selectOneMenu>
-                        <p:commandButton value="Registrar" update=":fr:formulario :fr:tabla" actionListener="#{citaManagedBean.registraCita()}"/>
-                    </h:panelGrid>
-                </h:form>
-            </p:dialog>
+            </div>   
         </h:form>
     </h:body>
 </html>

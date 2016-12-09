@@ -47,6 +47,10 @@ public class EstadoCManagedBean implements Serializable, Managedbean <EstadoCita
         etcfl.create(estci);
     }
     
+    public void eliminarEstadoCita(){
+        etcfl.remove(estci);
+    }
+    
     public List<EstadoCita> listarEstadoCita(){
         return etcfl.findAll();
     }
