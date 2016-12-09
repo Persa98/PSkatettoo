@@ -6,6 +6,8 @@
 package com.skatettoo.frontend.cita.controller;
 
 import com.skatettoo.backend.persistence.entities.Cita;
+import com.skatettoo.backend.persistence.entities.Disenio;
+import com.skatettoo.backend.persistence.entities.Usuario;
 import com.skatettoo.backend.persistence.facade.CitaFacadeLocal;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -20,7 +22,7 @@ import javax.ejb.EJB;
  */
 @Named(value = "citaManagedBean")
 @SessionScoped
-public class CitaManagedBean implements Serializable {
+public class CitaManagedBean implements Serializable{
 
     private Cita cita;
     @EJB
@@ -46,11 +48,21 @@ public class CitaManagedBean implements Serializable {
         cfl.create(cita);
     }
     
+    public void eliminarCita(Cita ci){
+        cfl.remove(ci);
+    }
+    
+    public void actualizarCita(Cita ci){
+        cita = ci;
+    }
+    
+    public void modificarCita(){
+        cfl.edit(cita);
+    }
+    
     public List<Cita> listarCita(){
         return cfl.findAll();
     }
             
-    public void eliminarCita(){
-        cfl.remove(cita);
-    }
+    
 }

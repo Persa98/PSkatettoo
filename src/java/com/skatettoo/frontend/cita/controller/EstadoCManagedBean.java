@@ -43,6 +43,10 @@ public class EstadoCManagedBean implements Serializable, Managedbean <EstadoCita
         estci = new EstadoCita();
     }
     
+    public void registrarEstadoCita(){
+        etcfl.create(estci);
+    }
+    
     public List<EstadoCita> listarEstadoCita(){
         return etcfl.findAll();
     }

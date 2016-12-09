@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Estado</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form id="fr">
+                <h:form>
+                    <h1><h:outputText value="Create/Edit"/></h1>
+                    <h:panelGrid columns="2">
+
+                        <h:outputLabel value="IdEstadoCita:" for="idEstadoCita" />
+                        <p:inputText id="idEstadoCita" value="#{estadoCManagedBean.estci.idEstadoCita}" title="IdEstadoCita" required="true" requiredMessage="The IdEstadoCita field is required."/>
+                        <h:outputLabel value="NombreEstadoCita:" for="nombreEstadoCita" />
+                        <p:inputText id="nombreEstadoCita" value="#{estadoCManagedBean.estci.nombreEstadoCita}" title="NombreEstadoCita" required="true" requiredMessage="The NombreEstadoCita field is required."/>
+                        <h:outputLabel value="Id:" for="id" />
+                        <p:inputText id="id" value="#{estadoCManagedBean.estci.id}" title="Id" />
+                        <p:commandButton value="Registrar" update=":fr:formulario :fr:tabla" actionListener="#{estadoCManagedBean.registrarEstadoCita()}"
+                </h:panelGrid>
+            </h:form>
+        </h:form>
+    </f:view>
+</h:body>
+</html>
