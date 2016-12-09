@@ -7,6 +7,7 @@ package com.skatettoo.frontend.cita.controller;
 
 import com.skatettoo.backend.persistence.entities.EstadoCita;
 import com.skatettoo.backend.persistence.facade.EstadoCitaFacadeLocal;
+import com.skatettoo.frontend.util.Managedbean;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -20,7 +21,7 @@ import javax.ejb.EJB;
  */
 @Named(value = "estadoCManagedBean")
 @SessionScoped
-public class EstadoCManagedBean implements Serializable {
+public class EstadoCManagedBean implements Serializable, Managedbean <EstadoCita>{
 
     private EstadoCita estci;
     @EJB
@@ -45,7 +46,9 @@ public class EstadoCManagedBean implements Serializable {
     public List<EstadoCita> listarEstadoCita(){
         return etcfl.findAll();
     }
-    
-    
-    
+
+    @Override
+    public EstadoCita getObject(Integer i) {
+        return etcfl.find(i);
+    }
 }

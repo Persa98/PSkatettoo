@@ -11,6 +11,7 @@ import com.skatettoo.backend.persistence.entities.Usuario;
 import com.skatettoo.backend.persistence.facade.DisenioFacadeLocal;
 import com.skatettoo.backend.persistence.facade.EstiloDisenioFacadeLocal;
 import com.skatettoo.backend.persistence.facade.UsuarioFacadeLocal;
+import com.skatettoo.frontend.util.Managedbean;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -24,7 +25,7 @@ import javax.ejb.EJB;
  */
 @Named(value = "disenioManagedBean")
 @SessionScoped
-public class DisenioManagedBean implements Serializable {
+public class DisenioManagedBean implements Serializable, Managedbean <Disenio> {
 
     private Disenio disenio;
     @EJB
@@ -65,6 +66,11 @@ public class DisenioManagedBean implements Serializable {
     
     public void modificarDisenio(){
         diseniofc.edit(disenio);
+    }
+
+    @Override
+    public Disenio getObject(Integer i) {
+        return diseniofc.find(i);
     }
     
 }
